@@ -68,9 +68,9 @@ module Hdo
       end
 
       def index_docs
-        json_transcripts.each do |input|
+        json_transcripts.each_with_index do |input, index|
           index_file(input)
-          @logger.info "indexed #{input}"
+          @logger.info "indexed #{input} (File #{index+1} of #{json_transcripts.size()}, #{ (((index+1)*100.0) / json_transcripts.size()).round(1)}%)"
         end
       end
 
