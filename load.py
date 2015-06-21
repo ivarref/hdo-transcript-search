@@ -6,7 +6,6 @@
 import json
 with open('frp.out.txt', 'w') as w:
   def process(d):
-    global errors
     for k in d.keys():
       e = d[k]
       if type(e)==dict:
