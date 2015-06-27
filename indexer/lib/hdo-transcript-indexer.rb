@@ -27,7 +27,7 @@ module Hdo
         @logger       = Logger.new(STDOUT)
         @create_index = options.fetch(:create_index)
         @force        = options.fetch(:force)
-        @download_only= options.fetch(:download_only)
+        @download_and_convert_only= options.fetch(:download_and_convert_only)
         @errors       = []
         @extras       = JSON.parse(File.read(File.expand_path("../hdo-transcript-indexer/extras.json", __FILE__)))
 
@@ -48,10 +48,10 @@ module Hdo
 
       def execute
         download
-        if @download_only
-          @logger.info "Done downloading"
+        convert
+        if @download_and_convert_only
+          @logger.info "Done downloading and convert"
         else
-          convert
           create_index
           index_docs
         end

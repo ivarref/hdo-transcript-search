@@ -27,7 +27,7 @@ options = {
   ],
   index_name: 'hdo-transcripts',
   create_index: false,
-  download_only: false,
+  download_and_convert_only: false,
   force: false
 }
 
@@ -36,7 +36,7 @@ parser = OptionParser.new do |opt|
   opt.on('-i', '--index INDEX_NAME', "Index to use, default: #{options[:index_name]}") { |n| options[:index_name] = n }
   opt.on('-c', '--create-index', "Delete and re-create the index") { options[:create_index] = true }
   opt.on('-d', '--data-dir PATH', "Data dir to cache downloads, default: #{options[:data_dir]}") { |dir| options[:data_dir] = dir }
-  opt.on('-o', '--download-only', "Download only") { options[:download_only] = true }
+  opt.on('-o', '--download-and-convert-only', "Download and convert only") { options[:download_and_convert_only] = true }
   opt.on('-f', '--force', "Force re-download of transcripts") { options[:force] = true }
   opt.on('-s', '--sessions SESSIONS', "Comma-separated list of sessions, default: #{options[:sessions].join(',')}") { |sessions| options[:sessions] = sessions.split(',') }
   opt.on('-h', '--help', "You're looking at it.") { puts opt; exit 0; }
