@@ -170,6 +170,9 @@ module Hdo
 
           unless dest.exist?
             @logger.info "fetching older transcripts"
+            ok = system "which", "unzip"
+            ok or raise "unzip not installed"
+
             ok = system "curl", "-o", dest.to_s, "-L", "http://files.holderdeord.no/data/transcripts/cleaned/1998-2009.zip"
             ok or raise "could not fetch transcripts"
 
